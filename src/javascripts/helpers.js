@@ -8,7 +8,7 @@ export function isEmpty(object) {
   return Object.keys(object).length === 0
 }
 
-const formConstraints = {
+const constraints = {
   exampleEmail: {
     presence: true,
     email: true,
@@ -22,6 +22,12 @@ const formConstraints = {
   },
 }
 
+
 export function validateForm(formData) {
+  let formConstraints = {};
+  Object.keys(formData).forEach((key) => {
+    formConstraints[key] = constraints[key];
+  })
   return validate(formData, formConstraints)
 }
+

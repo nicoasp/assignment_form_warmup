@@ -15,8 +15,13 @@ class ControlledFormContainer extends Component {
   }
 
   onChangeInput = (e) => {
-    this.setState({
+    const data = {
       [e.target.name]: e.target.value
+    }
+    const errors = validateForm(data);
+    this.setState({
+      [e.target.name]: e.target.value,
+      errors
     })
   }
 
